@@ -3,12 +3,14 @@ import Link from "next/link";
 import { getDatabase } from "../lib/notion";
 import { Text } from "./[id].js";
 import styles from "./index.module.css";
+import { Header } from "../components/Header"
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home({ posts }) {
   return (
     <div>
+      <Header></Header>
       <Head>
         <title>Notion Next.js blog</title>
         <link rel="icon" href="/favicon.ico" />
