@@ -12,7 +12,6 @@ const LOGO_LIGHT_SRC = "/assets/logo-light.svg";
 
 export const HeaderLogo: React.FC<HeaderLogoProps> = (props) => {
     const { isTextDark } = props;
-    console.log({ isTextDark })
     return (
         <Link
             href={BASE_PATH}

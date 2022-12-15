@@ -19,3 +19,38 @@ a {
 
 h1 {
 }
+
+html: {
+  webkittextsizeadjust: 100%;
+}
+
+body .disable-scroll {
+  overflow: hidden;
+}
+
+img {
+  borderstyle: none;
+}
+
+iframe {
+  border: none;
+}
+
+pre {
+  /* fontFamily: theme.fonts.monospace, */
+  fontsize: 1em;
+}
+
+[hidden] {
+  display: none;
+}
+
+#@TODO: fix ::selection {
+  /* color: theme.colors.text, */
+  /* backgroundColor: theme.colors.highlight, */
+}
+
+a {
+  /* transition: theme.transitions.default, */
+  /* color: "inherit", */
+}
