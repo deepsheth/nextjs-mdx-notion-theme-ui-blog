@@ -1,0 +1,39 @@
+import { MarkdownPostTemplate } from "../../components/PostTemplate";
+
+export const frontmatter = {
+  title: "Github Flavored Markdown (GFH)",
+  date: "2019-01-01",
+  slug: "github-flavored-markdown",
+};
+
+# GFM
+
+## Autolink literals
+
+www.example.com, https://example.com, and contact@example.com.
+
+## Footnote
+
+A note[^1]
+
+[^1]: Big note.
+
+## Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+## Table
+
+| a   | b   |   c |  d  |
+| --- | :-- | --: | :-: |
+
+## Tasklist
+
+- [ ] to do
+- [x] done
+
+export default ({ children }) => (
+  <MarkdownPostTemplate frontmatter={frontmatter}>
+    {children}
+  </MarkdownPostTemplate>
+);

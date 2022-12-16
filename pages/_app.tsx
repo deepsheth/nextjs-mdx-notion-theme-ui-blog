@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/globals.css";
 import type { Theme } from 'theme-ui'
 import { ThemeProvider } from 'theme-ui'

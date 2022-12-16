@@ -10,6 +10,7 @@ export type LayoutProps = {
     hasTransparentHeader?: boolean;
     hasFullWidthContainer?: boolean;
     hasFooter?: boolean;
+    children: React.ReactNode;
 };
 
 /**

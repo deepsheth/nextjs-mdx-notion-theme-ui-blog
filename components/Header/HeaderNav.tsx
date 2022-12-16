@@ -23,7 +23,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = (props) => {
                         <Link
                             key={`${index}-${navItem.label}`}
                             sx={sxNavLink(isTextDark, isVisibleMobile, isVisibleTablet, isVisibleLaptop)}
-                            href={isExternalLink ? navItem.href : `/${BASE_PATH}/${navItem.slug}`}
+                            href={isExternalLink ? navItem.href : navItem.slug}
                         >
                             {navItem.label}
                         </Link>

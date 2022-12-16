@@ -9,12 +9,16 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
+    "@next/mdx": "^13.0.7",
     "@notionhq/client": "^2.2.1",
     "@theme-ui/color": "^0.15.4",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-headroom": "^3.2.1",
+    "remark-gfm": "^3.0.1",
     "theme-ui": "^0.15.4",
     "typeface-dm-sans": "^1.1.13"
   },

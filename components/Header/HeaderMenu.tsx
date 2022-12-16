@@ -18,12 +18,11 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = (props) => {
                 {headerMenuItems.map((menuItem, index) => {
                     const { isVisibleMobile, isVisibleTablet, isVisibleLaptop } = menuItem;
                     const isExternalLink = !!menuItem.href;
-
                     return (
                         <Link
                             key={`${index}-${menuItem.label}`}
                             sx={sxNavLink(isVisibleMobile, isVisibleTablet, isVisibleLaptop)}
-                            href={isExternalLink ? menuItem.href : `/${BASE_PATH}/${menuItem.slug}`}
+                            href={isExternalLink ? menuItem.href : menuItem.slug}
                         >
                             {menuItem.label}
                         </Link>

@@ -10,7 +10,7 @@ import { SlideDescription } from "../Slide/SlideDescription";
 import { BASE_PATH, BLOG_PAGE_SLUG, databaseId } from "../../constants/global";
 import Link from "next/link";
 import { SlideOverlay } from "../Slide/SlideOverlay";
-import { getDatabase } from "../../lib/notion";
+import { getDatabase } from "../../utils/notion";
 import BlogList from "../BlogList";
 
 export type LatestPostSlideProps = {

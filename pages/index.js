@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getDatabase } from "../lib/notion";
+import { getDatabase } from "../utils/notion";
 import { NotionTextBlock } from "./[id].js";
 import styles from "./index.module.css";
 import { HomePageSlides } from "../components/content/HomePageSlides";
