@@ -8,8 +8,6 @@ import { SlideContainer } from "./SlideContainer";
 import { SlideTitle } from "./SlideTitle";
 import { SlideDescription } from "./SlideDescription";
 import { SlideButton } from "./SlideButton";
-import { ReactElement } from "react";
-import { ImageProps } from "next/image";
 
 export type SlideProps = {
     id: string;

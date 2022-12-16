@@ -2,14 +2,14 @@ import React from "react";
 import { Grid, Box, ThemeUICSSObject } from "theme-ui";
 // import { ThemeUICSSObject } from "@styled-system/css";
 import { sxSlideBase } from "../Slide";
-import { SlideContainerBase } from "../slide/SlideContainer";
-import { SlideTitle } from "../slide/SlideTitle";
+import { SlideContainerBase } from "../Slide/SlideContainer";
+import { SlideTitle } from "../Slide/SlideTitle";
 // import BlogList from "./blog-list";
 // import { Post } from "../types/post";
-import { SlideDescription } from "../slide/SlideDescription";
+import { SlideDescription } from "../Slide/SlideDescription";
 import { BASE_PATH, BLOG_PAGE_SLUG, databaseId } from "../../constants/global";
 import Link from "next/link";
-import { SlideOverlay } from "../slide/SlideOverlay";
+import { SlideOverlay } from "../Slide/SlideOverlay";
 import { getDatabase } from "../../lib/notion";
 import BlogList from "../BlogList";
 

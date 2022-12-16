@@ -1,14 +1,13 @@
 import React from "react";
 import { jsx } from "theme-ui";
 import { Post } from "../../types/post";
-import Slide from "../slide";
+import Slide from "../Slide";
 import Link from "next/link";
 import { LatestPostSlide } from "./LatestPostSlide";
-import { SlideTitle } from "../slide/SlideTitle";
-import { SlideDescription } from "../slide/SlideDescription";
-import { SlideButton } from "../slide/SlideButton";
+import { SlideTitle } from "../Slide/SlideTitle";
+import { SlideDescription } from "../Slide/SlideDescription";
+import { SlideButton } from "../Slide/SlideButton";
 import { FooterLogo } from "../Footer/FooterLogo";
-import { getDatabase } from "../../lib/notion";
 import { databaseId } from "../../constants/global";
 
 export type SlidesProps = {

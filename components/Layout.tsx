@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container, jsx } from "theme-ui";
 import { Header } from "./Header"
-import Footer from "./footer";
+import Footer from "./Footer";
 import CodeStyles from "../styles/code";
 import SkipNavLink from "./SkipNavLink";
 
