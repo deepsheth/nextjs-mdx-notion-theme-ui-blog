@@ -19,7 +19,7 @@ export const FooterLogo: React.FC<FooterLogoProps> = (props) => {
 
 
     const imgFooterLogo = (
-        <Image src={isTextDark ? imgLogoIconDark : imgLogoIconLight} title={iconTitleText} alt={iconTitleText} width="48" />
+        <Image src={isTextDark ? imgLogoIconDark : imgLogoIconLight} title={iconTitleText} alt={iconTitleText} width="48" height="32" />
     );
     return slug ? <Link href={`${BASE_PATH}/${slug}`}> {imgFooterLogo}</Link > : imgFooterLogo;
 };

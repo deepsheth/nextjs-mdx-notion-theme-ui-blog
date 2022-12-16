@@ -1,14 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getDatabase } from "../lib/notion";
-import { Text } from "./[id].js";
+import { NotionTextBlock } from "./[id].js";
 import styles from "./index.module.css";
-import { HomePageSlides } from "../components/HomePageSlides";
+import { HomePageSlides } from "../components/content/HomePageSlides";
 import { Layout } from "../components/Layout";
+import { databaseId } from "../constants/global";
 
-export const databaseId = process.env.NOTION_DATABASE_ID;
 
 export default function Home({ posts }) {
+
   return (
     <div>
       <Head>
@@ -17,10 +18,10 @@ export default function Home({ posts }) {
       </Head>
 
       <Layout hasTransparentHeader hasFullWidthContainer hasFooter={false}>
-        <HomePageSlides />
+        <HomePageSlides posts={posts} />
       </Layout>
 
-      <main className={styles.container}>
+      {/* <main className={styles.container}>
         <header className={styles.header}>
           <div className={styles.logos}>
             <svg
@@ -95,7 +96,7 @@ export default function Home({ posts }) {
             );
           })}
         </ol>
-      </main>
+      </main> */}
     </div>
   );
 }

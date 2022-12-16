@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import Head from "next/head";
 import { getDatabase, getPage, getBlocks } from "../lib/notion";
 import Link from "next/link";
-import { databaseId } from "./index.js";
+import { databaseId } from "../constants/global";
 import styles from "./post.module.css";
 
-export const Text = ({ text }) => {
+export const NotionTextBlock = ({ text }) => {
   if (!text) {
     return null;
   }
@@ -52,32 +52,32 @@ const renderBlock = (block) => {
     case "paragraph":
       return (
         <p>
-          <Text text={value.rich_text} />
+          <NotionTextBlock text={value.rich_text} />
         </p>
       );
     case "heading_1":
       return (
         <h1>
-          <Text text={value.rich_text} />
+          <NotionTextBlock text={value.rich_text} />
         </h1>
       );
     case "heading_2":
       return (
         <h2>
-          <Text text={value.rich_text} />
+          <NotionTextBlock text={value.rich_text} />
         </h2>
       );
     case "heading_3":
       return (
         <h3>
-          <Text text={value.rich_text} />
+          <NotionTextBlock text={value.rich_text} />
         </h3>
       );
     case "bulleted_list_item":
     case "numbered_list_item":
       return (
         <li>
-          <Text text={value.rich_text} />
+          <NotionTextBlock text={value.rich_text} />
           {!!value.children && renderNestedList(block)}
         </li>
       );
@@ -86,7 +86,7 @@ const renderBlock = (block) => {
         <div>
           <label htmlFor={id}>
             <input type="checkbox" id={id} defaultChecked={value.checked} />{" "}
-            <Text text={value.rich_text} />
+            <NotionTextBlock text={value.rich_text} />
           </label>
         </div>
       );
@@ -94,7 +94,7 @@ const renderBlock = (block) => {
       return (
         <details>
           <summary>
-            <Text text={value.rich_text} />
+            <NotionTextBlock text={value.rich_text} />
           </summary>
           {value.children?.map((block) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
@@ -150,9 +150,8 @@ const renderBlock = (block) => {
         </a>
       );
     default:
-      return `❌ Unsupported block (${
-        type === "unsupported" ? "unsupported by Notion API" : type
-      })`;
+      return `❌ Unsupported block (${type === "unsupported" ? "unsupported by Notion API" : type
+        })`;
   }
 };
 
@@ -169,7 +168,7 @@ export default function Post({ page, blocks }) {
 
       <article className={styles.container}>
         <h1 className={styles.name}>
-          <Text text={page.properties.Name.title} />
+          <NotionTextBlock text={page.properties.Name.title} />
         </h1>
         <section>
           {blocks.map((block) => (

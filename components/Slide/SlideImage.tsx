@@ -3,6 +3,7 @@ import React from "react";
 import { useThemeUI } from "theme-ui";
 
 export type SlideImageProps = Partial<ImageProps> & {
+    imgSrc: string;
     fluid: boolean; // @TODO use this prop
     imagePosition?: string;
 };
@@ -15,6 +16,7 @@ export type SlideImageProps = Partial<ImageProps> & {
  */
 export const SlideImage: React.FC<SlideImageProps> = (props) => {
     const { fluid, imagePosition,
+        imgSrc,
         styles,
         imgStyle,
         ...otherProps } = props;
@@ -28,7 +30,7 @@ export const SlideImage: React.FC<SlideImageProps> = (props) => {
     };
 
     return <Image
-        src=""
+        src={imgSrc}
         alt=""
         fill
         style={styleWithDefaults}

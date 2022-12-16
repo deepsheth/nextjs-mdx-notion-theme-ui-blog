@@ -52,5 +52,5 @@ pre {
 
 a {
   /* transition: theme.transitions.default, */
-  /* color: "inherit", */
+  color: inherit;
 }

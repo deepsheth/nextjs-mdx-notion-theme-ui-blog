@@ -8,12 +8,15 @@ import { SlideContainer } from "./SlideContainer";
 import { SlideTitle } from "./SlideTitle";
 import { SlideDescription } from "./SlideDescription";
 import { SlideButton } from "./SlideButton";
+import { ReactElement } from "react";
+import { ImageProps } from "next/image";
 
 export type SlideProps = {
     id: string;
     className?: string; // Pass down className to allow overriding styles
     title?: string;
     description?: ReactNode;
+    imgSrc?: string;
     fluid?: boolean;
     overlayColor?: string | null;
     highlightColor?: string;
@@ -33,6 +36,7 @@ export const Slide: React.FC<SlideProps> = (props) => {
         className,
         title,
         description,
+        imgSrc,
         fluid,
         overlayColor = "primary",
         highlightColor = "highlight",
@@ -53,7 +57,7 @@ export const Slide: React.FC<SlideProps> = (props) => {
             className={className}
             sx={sxSlide(isBorderless, hasDistinctBorder, hasScrollIndicator, highlightColor)}
         >
-            {!!fluid && <SlideImage fluid={fluid} imagePosition={imagePosition} loading="eager" />}
+            {!!imgSrc && <SlideImage imgSrc={imgSrc} fluid imagePosition={imagePosition} loading="eager" />}
 
             {!!overlayColor && <SlideOverlay overlayColor={overlayColor} isColorful={isColorful} />}
 
