@@ -10,7 +10,6 @@ import { SlideButton } from "../slide/SlideButton";
 import { FooterLogo } from "../Footer/FooterLogo";
 import { getDatabase } from "../../lib/notion";
 import { databaseId } from "../../constants/global";
-// import { SlideBlog } from "../components/slide-blog";
 
 export type SlidesProps = {
     posts: Post[];
@@ -24,7 +23,7 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
     const { posts } = props;
 
     return (
-        <React.Fragment>
+        <main>
             {/**
                 * INTRO
             */}
@@ -32,14 +31,11 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                 id="intro"
                 title="Smile for the camera! And say hello to Polaroid."
                 description={
-                    <React.Fragment>
-                        <p>
-                            Polaroid is a <em>photography-focused</em> React theme for building portfolio websites. The NextJS theme integration with Notion for blogging.
-                            The Gatsby version supports an MDX blog with tags/categories, syntax-highlighted code blocks, Theme UI for dark mode, and Typescript.
-                        </p>
-                    </React.Fragment>
+                    <p>
+                        Polaroid is a <em>photography-focused</em> React theme for building portfolio websites. The NextJS theme integration with Notion for blogging.
+                        The Gatsby version supports an MDX blog with tags/categories, syntax-highlighted code blocks, Theme UI for dark mode, and Typescript.
+                    </p>
                 }
-                // fluid={slideImages.imgIntro.childImageSharp.fluid}
                 imgSrc="/content/images/polaroid-bg.jpg"
                 overlayColor="veronica.dark"
                 highlightColor="primary"
@@ -160,6 +156,6 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                     </p>
                 </SlideDescription>
             </LatestPostSlide>
-        </React.Fragment>
+        </main>
     );
 };

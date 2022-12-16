@@ -1,9 +1,9 @@
 
 import React from "react";
-import { jsx, Link, NavLink } from "theme-ui";
-import { SystemStyleObject } from "@styled-system/css";
 import { BASE_PATH } from "../../constants/global";
 import { headerNavItems } from "./constants";
+import { ThemeUICSSObject } from "theme-ui";
+import Link from "next/link";
 
 export type HeaderNavProps = {
     isTextDark: boolean;
@@ -14,25 +14,23 @@ export const HeaderNav: React.FC<HeaderNavProps> = (props) => {
 
     return (
         <nav sx={sxNav}>
-            {headerNavItems.map((navItem, index) => {
-                const { isVisibleMobile, isVisibleTablet, isVisibleLaptop } = navItem;
-                const isExternalLink = !!navItem.href;
-                const navLinkProps = {
-                    ...(isExternalLink
-                        ? { href: navItem.href }
-                        : { as: Link, to: `/${BASE_PATH}/${navItem.slug}` }),
-                };
-                return (
-                    <NavLink
-                        key={`${index}-${navItem.label}`}
-                        sx={sxNavLink(isTextDark, isVisibleMobile, isVisibleTablet, isVisibleLaptop)}
-                        {...navLinkProps}
-                    >
-                        {navItem.label}
-                    </NavLink>
-                );
-            })}
-        </nav>
+            {
+                headerNavItems.map((navItem, index) => {
+                    const { isVisibleMobile, isVisibleTablet, isVisibleLaptop } = navItem;
+                    const isExternalLink = !!navItem.href;
+
+                    return (
+                        <Link
+                            key={`${index}-${navItem.label}`}
+                            sx={sxNavLink(isTextDark, isVisibleMobile, isVisibleTablet, isVisibleLaptop)}
+                            href={isExternalLink ? navItem.href : `/${BASE_PATH}/${navItem.slug}`}
+                        >
+                            {navItem.label}
+                        </Link>
+                    );
+                })
+            }
+        </nav >
     );
 };
 export default HeaderNav;
@@ -53,7 +51,7 @@ export type HeaderNavItem = {
  * Styles
  */
 
-const sxNav: SystemStyleObject = {
+const sxNav: ThemeUICSSObject = {
     flex: "1 1 auto",
     display: "flex",
     justifyContent: "flex-end",
@@ -67,7 +65,7 @@ const sxNavLink = (
     isVisibleMobile?: boolean,
     isVisibleTablet?: boolean,
     isVisibleLaptop?: boolean
-): SystemStyleObject => {
+): ThemeUICSSObject => {
     const displayStyles = [
         isVisibleMobile ? "flex" : "none",
         null,
@@ -85,5 +83,10 @@ const sxNavLink = (
         whiteSpace: "nowrap",
         height: "100%",
         marginLeft: [2, null, null, null, 3, null, null, 4, null, 5],
+        textTransform: "uppercase",
+        letterSpacing: "0.2ch",
+        fontSize: [0, null, null, null, 1],
+        fontWeight: 500,
+        textDecoration: "none",
     };
 };

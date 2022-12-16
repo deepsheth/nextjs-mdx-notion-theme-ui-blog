@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { jsx, Box, NavLink, Link } from "theme-ui";
-import { SystemStyleObject } from "@styled-system/css";
+import { Box } from "theme-ui";
+import { ThemeUICSSObject } from "theme-ui";
 import { headerMenuItems } from "./constants";
 import { BASE_PATH } from "../../constants/global";
+import Link from "next/link";
 
 export type HeaderMenuProps = {
     isOpen: boolean;
@@ -17,23 +18,19 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = (props) => {
                 {headerMenuItems.map((menuItem, index) => {
                     const { isVisibleMobile, isVisibleTablet, isVisibleLaptop } = menuItem;
                     const isExternalLink = !!menuItem.href;
-                    const navLinkProps = {
-                        ...(isExternalLink
-                            ? { href: menuItem.href }
-                            : { as: Link, to: `/${BASE_PATH}/${menuItem.slug}` }),
-                    };
+
                     return (
-                        <NavLink
+                        <Link
                             key={`${index}-${menuItem.label}`}
                             sx={sxNavLink(isVisibleMobile, isVisibleTablet, isVisibleLaptop)}
-                            {...navLinkProps}
+                            href={isExternalLink ? menuItem.href : `/${BASE_PATH}/${menuItem.slug}`}
                         >
                             {menuItem.label}
-                        </NavLink>
+                        </Link>
                     );
                 })}
             </nav>
-        </Box>
+        </Box >
     );
 };
 export default HeaderMenu;
@@ -57,7 +54,7 @@ export type HeaderMenuItem = {
 /**
  * Styles
  */
-const sxBox = (isOpen: boolean): SystemStyleObject => ({
+const sxBox = (isOpen: boolean): ThemeUICSSObject => ({
     paddingTop: [6, null, null, null, 7, null, null, 8], // Offset by height of header
     backgroundColor: "muted",
     height: "100vh",
@@ -70,7 +67,7 @@ const sxBox = (isOpen: boolean): SystemStyleObject => ({
     transition: "all 300ms ease-in-out",
 });
 
-const sxNav: SystemStyleObject = {
+const sxNav: ThemeUICSSObject = {
     display: "flex",
     flexDirection: "column",
     height: "100%",
@@ -82,7 +79,7 @@ const sxNavLink = (
     isVisibleMobile?: boolean,
     isVisibleTablet?: boolean,
     isVisibleLaptop?: boolean
-): SystemStyleObject => {
+): ThemeUICSSObject => {
     const displayStyles = [
         isVisibleMobile !== false ? "block" : "none",
         null,

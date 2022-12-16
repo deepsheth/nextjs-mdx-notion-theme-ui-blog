@@ -17,7 +17,6 @@ export type SlideProps = {
     title?: string;
     description?: ReactNode;
     imgSrc?: string;
-    fluid?: boolean;
     overlayColor?: string | null;
     highlightColor?: string;
     isColorful?: boolean;
@@ -37,7 +36,6 @@ export const Slide: React.FC<SlideProps> = (props) => {
         title,
         description,
         imgSrc,
-        fluid,
         overlayColor = "primary",
         highlightColor = "highlight",
         isColorful = false,
@@ -57,7 +55,7 @@ export const Slide: React.FC<SlideProps> = (props) => {
             className={className}
             sx={sxSlide(isBorderless, hasDistinctBorder, hasScrollIndicator, highlightColor)}
         >
-            {!!imgSrc && <SlideImage imgSrc={imgSrc} fluid imagePosition={imagePosition} loading="eager" />}
+            {!!imgSrc && <SlideImage src={imgSrc} imagePosition={imagePosition} loading="eager" alt={title || ''} />}
 
             {!!overlayColor && <SlideOverlay overlayColor={overlayColor} isColorful={isColorful} />}
 
