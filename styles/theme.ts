@@ -261,7 +261,7 @@ const styles: ThemePolaroid["styles"] = {
         fontWeight: "body",
     },
     p: { ...baseTextBlock },
-    a: { color: "primary" },
+    a: { color: "primary", transition: transitions.default },
     h1: { ...baseHeading, fontSize: [5, null, 6, null, 7] },
     h2: { ...baseHeading, fontSize: [4, null, 5, null, 6] },
     h3: { ...baseHeading, fontSize: [3, null, 4, null, 5] },

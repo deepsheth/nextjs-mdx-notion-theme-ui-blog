@@ -92,5 +92,11 @@ const sxNavLink = (
     return {
         display: displayStyles,
         padding: [2, null, null, null, 3, null, null, 4, null, 5],
+        textTransform: "uppercase",
+        letterSpacing: "0.2ch",
+        textDecoration: "none",
+        ':hover': {
+            color: "primary",
+        },
     };
 };

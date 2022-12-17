@@ -88,5 +88,8 @@ const sxNavLink = (
         fontSize: [0, null, null, null, 1],
         fontWeight: 500,
         textDecoration: "none",
+        ':hover': {
+            color: "primary",
+        },
     };
 };

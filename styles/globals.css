@@ -51,6 +51,6 @@ pre {
 }
 
 a {
-  /* transition: theme.transitions.default, */
+  transition: color 200ms ease 0s;
   color: inherit;
 }
