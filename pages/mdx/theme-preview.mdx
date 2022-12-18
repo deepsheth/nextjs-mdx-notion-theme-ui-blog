@@ -23,6 +23,7 @@ import {
   Message,
 } from "theme-ui";
 import { MarkdownPostTemplate } from "../../components/PostTemplate";
+import Code from "../../components/Code";
 
 export const frontmatter = {
   title: "Theme Polaroid",
@@ -263,6 +264,17 @@ const settings: CardGameSettings = {
 }
 export settings;
 ```
+
+<Code
+  codeString={`const settings: CardGameSettings = {
+    firstPlayerName: 'dealer',
+    deckShuffled: true,
+    // Number of decks to start the game with. Each deck has 52 cards.
+    deckCount: 1,
+    // Number of total players including the dealer. There will always be one dealer.
+    numPlayers: 2,
+    `}
+></Code>
 
 # Image
 

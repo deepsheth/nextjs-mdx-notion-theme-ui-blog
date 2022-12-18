@@ -2,6 +2,7 @@ import React from "react";
 import { NotionTextBlock } from "../pages/[id]";
 import styles from "../pages/post.module.css";
 import Link from "next/link";
+import Code from "../components/Code";
 
 export const renderBlock = (block) => {
   const { type, id } = block;
@@ -77,12 +78,12 @@ export const renderBlock = (block) => {
     case "quote":
       return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
     case "code":
+      console.log({ value });
       return (
-        <pre className={styles.pre}>
-          <code className={styles.code_block} key={id}>
-            {value.rich_text[0].plain_text}
-          </code>
-        </pre>
+        <Code
+          codeString={value.rich_text[0].plain_text}
+          language={value.language}
+        ></Code>
       );
     case "file":
       const src_file =
