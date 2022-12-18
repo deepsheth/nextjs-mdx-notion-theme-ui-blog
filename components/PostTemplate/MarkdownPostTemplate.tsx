@@ -1,9 +1,15 @@
-import { Heading, Divider, Text } from "theme-ui";
-import React, { Fragment } from "react";
-import Layout from "../Layout";
+import {
+    MDXProvider,
+    useMDXComponents
+} from '@mdx-js/react';
+import { useThemedStylesWithMdx } from '@theme-ui/mdx';
 import Head from "next/head";
-import Link from "next/link";
+import React from "react";
+import { Divider, Heading, Text, ThemeProvider } from "theme-ui";
+import themePolaroid from '../../styles/theme';
 import { Frontmatter } from "../../types/frontmatter";
+import Layout from "../Layout";
+
 
 type MarkdownPostTemplateProps = {
     frontmatter: Frontmatter
@@ -11,32 +17,40 @@ type MarkdownPostTemplateProps = {
 }
 
 const MarkdownPostTemplate: React.FC<MarkdownPostTemplateProps> = ({ frontmatter, children }) => {
-
     const { title, date, slug } = frontmatter;
-    return (<Layout>
-        <Head>
-            <title>{title}</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+    const componentsWithStyles = useThemedStylesWithMdx(
+        useMDXComponents()
+    );
 
-        <article>
-            <Heading>
-                {title}
-            </Heading>
+    return (
+        <ThemeProvider theme={themePolaroid}>
+            <MDXProvider components={componentsWithStyles}>
+                <Layout>
+                    <Head>
+                        <title>{title}</title>
+                        <link rel="icon" href="/favicon.png" />
+                    </Head>
 
-            <p sx={{ color: "accent" }}>
-                <Text variant="mono">
-                    <time>{date}</time>
-                </Text>
-            </p>
+                    <article>
+                        <Heading>
+                            {title}
+                        </Heading>
 
-            <Divider variant="dividers.pageHeading" />
+                        <p sx={{ color: "accent" }}>
+                            <Text variant="mono">
+                                <time>{date}</time>
+                            </Text>
+                        </p>
 
-            <section>
-                {children}
-            </section>
-        </article>
-    </Layout>
+                        <Divider variant="dividers.pageHeading" />
+
+                        <section>
+                            {children}
+                        </section>
+                    </article>
+                </Layout>
+            </MDXProvider>
+        </ThemeProvider>
     );
 }
 

@@ -442,6 +442,14 @@
   dependencies:
     csstype "^3.0.10"
 
+"@theme-ui/mdx@^0.15.4":
+  version "0.15.4"
+  resolved "https://registry.yarnpkg.com/@theme-ui/mdx/-/mdx-0.15.4.tgz#1a5e4a218de91f5abdde2e20e1309d6d19cfd3ee"
+  integrity sha512-pDevKE15T9U/V8WIAvEEx5eXpj3OWn7Y9NRofcWq3VK525lt2v73rXInl7LIOIBa3rB/CTiickQL/YdC84hKoQ==
+  dependencies:
+    "@theme-ui/core" "^0.15.4"
+    "@theme-ui/css" "^0.15.4"
+
 "@theme-ui/theme-provider@^0.15.4":
   version "0.15.4"
   resolved "https://registry.npmjs.org/@theme-ui/theme-provider/-/theme-provider-0.15.4.tgz"

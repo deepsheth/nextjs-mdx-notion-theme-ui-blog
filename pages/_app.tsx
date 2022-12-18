@@ -1,26 +1,24 @@
+import {
+  MDXProvider,
+  useMDXComponents
+} from '@mdx-js/react';
+import { useThemedStylesWithMdx } from '@theme-ui/mdx';
 import React from "react";
+import { ThemeProvider } from 'theme-ui';
 import "../styles/globals.css";
-import type { Theme } from 'theme-ui'
-import { ThemeProvider } from 'theme-ui'
 import themePolaroid from "../styles/theme";
 
-export const theme: Theme = {
-  fonts: {
-    body: 'system-ui, sans-serif',
-    heading: '"Avenir Next", sans-serif',
-    monospace: 'Menlo, monospace',
-  },
-  colors: {
-    text: '#000',
-    background: '#fff',
-    primary: '#33e',
-  },
-}
-
 function MyApp({ Component, pageProps }) {
+  const componentsWithStyles = useThemedStylesWithMdx(
+    useMDXComponents()
+  );
+
+
   return (
     <ThemeProvider theme={themePolaroid}>
-      <Component {...pageProps} />
+      <MDXProvider components={componentsWithStyles}>
+        <Component {...pageProps} />
+      </MDXProvider>
     </ThemeProvider>
   )
 }

@@ -4,10 +4,11 @@ import { ThemeUICSSObject } from "theme-ui"
 import { Box, Text } from "@theme-ui/components";
 import { NotionTextBlock } from "../pages/[id]";
 import Link from "next/link";
+import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlogListItemProps = {
     className?: string; // Pass down className to allow overriding styles
-    post: Post;
+    post: (PageObjectResponse | PartialPageObjectResponse)
     showTags?: boolean;
 };
 
@@ -33,10 +34,10 @@ export const BlogListItem: React.FC<BlogListItemProps> = (props) => {
             <p sx={sxBlogPostDetails}>
                 <time>{date}</time>
 
-                {post.tags && showTags && (
+                {post.properties.Tags && showTags && (
                     <React.Fragment>
                         {` — `}
-                        <ItemTags tags={post.tags} />
+                        <ItemTags tags={post.properties.Tags.multi_select} />
                     </React.Fragment>
                 )}
             </p>
@@ -74,7 +75,7 @@ const sxBlogPostDetails: ThemeUICSSObject = {
 };
 
 export type BlogListProps = {
-    posts: Post[];
+    posts: (PageObjectResponse | PartialPageObjectResponse)[];
     className?: string; // Pass down className to allow overriding styles
     showTags?: boolean;
 };

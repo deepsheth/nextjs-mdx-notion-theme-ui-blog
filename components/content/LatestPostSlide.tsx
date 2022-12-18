@@ -12,6 +12,7 @@ import Link from "next/link";
 import { SlideOverlay } from "../Slide/SlideOverlay";
 import { getDatabase } from "../../utils/notion";
 import BlogList from "../BlogList";
+import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export type LatestPostSlideProps = {
     id: string;
@@ -21,7 +22,7 @@ export type LatestPostSlideProps = {
     isColorful?: boolean;
     isBorderless?: boolean;
     hasDistinctBorder?: boolean;
-    posts: any;
+    posts: (PageObjectResponse | PartialPageObjectResponse)[];
     children?: React.ReactNode;
 };
 

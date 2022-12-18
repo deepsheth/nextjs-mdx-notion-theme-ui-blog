@@ -1,20 +1,22 @@
+import { useTheme } from "@emotion/react";
 import Head from "next/head";
-import Link from "next/link";
-import { getDatabase } from "../utils/notion";
-import { NotionTextBlock } from "./[id].js";
-import styles from "./index.module.css";
 import { HomePageSlides } from "../components/content/HomePageSlides";
 import { Layout } from "../components/Layout";
 import { databaseId } from "../constants/global";
+import { getPosts } from "../utils/notion";
 
 
 export default function Home({ posts }) {
+  const theme = useTheme();
+
+  console.log({ posts });
+  console.log({ theme });
 
   return (
     <div>
       <Head>
         <title>Notion Next.js blog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <Layout hasTransparentHeader hasFullWidthContainer hasFooter={false}>
@@ -25,7 +27,7 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId);
+  const database = await getPosts(databaseId);
 
   return {
     props: {

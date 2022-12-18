@@ -36,11 +36,6 @@ iframe {
   border: none;
 }
 
-pre {
-  /* fontFamily: theme.fonts.monospace, */
-  fontsize: 1em;
-}
-
 [hidden] {
   display: none;
 }

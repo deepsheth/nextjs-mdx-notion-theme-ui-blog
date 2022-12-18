@@ -1,13 +1,9 @@
-import { Fragment } from "react";
-import Head from "next/head";
-import { getDatabase, getPage, getBlocks } from "../utils/notion";
-import Link from "next/link";
+import { getDatabase, getPage, getBlocks, getDate } from "../utils/notion";
 import { databaseId } from "../constants/global";
 import styles from "./post.module.css";
-import Layout from "../components/Layout";
-import { Divider, Heading, Text } from "theme-ui";
 import { NotionPostTemplate } from "../components/PostTemplate";
 import { renderBlock } from "../utils/renderBlock";
+import { Link, Text } from "theme-ui";
 
 export const NotionTextBlock = ({ text }) => {
   if (!text) {
@@ -18,6 +14,14 @@ export const NotionTextBlock = ({ text }) => {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,
     } = value;
+
+    if (code) {
+      return (
+        <code>
+          {text.link ? <Link href={text.link.url}>{text.content}</Link> : text.content}
+        </code>
+      )
+    }
     return (
       <span
         className={[
@@ -29,7 +33,7 @@ export const NotionTextBlock = ({ text }) => {
         ].join(" ")}
         style={color !== "default" ? { color } : {}}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? <Link href={text.link.url}>{text.content}</Link> : text.content}
       </span>
     );
   });
@@ -53,17 +57,8 @@ export default function Post({ page, blocks }) {
     return <div />;
   }
 
-  const date = new Date(page.last_edited_time).toLocaleString(
-    "en-US",
-    {
-      month: "short",
-      day: "2-digit",
-      year: "numeric",
-    }
-  );
-
   return (
-    <NotionPostTemplate page={page} blocks={blocks} date={date}></NotionPostTemplate>
+    <NotionPostTemplate page={page} blocks={blocks} date={getDate(page)}></NotionPostTemplate>
   );
 }
 

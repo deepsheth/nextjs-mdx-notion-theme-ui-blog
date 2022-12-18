@@ -9,9 +9,10 @@ import { SlideDescription } from "../Slide/SlideDescription";
 import { SlideButton } from "../Slide/SlideButton";
 import { FooterLogo } from "../Footer/FooterLogo";
 import { databaseId } from "../../constants/global";
+import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export type SlidesProps = {
-    posts: Post[];
+    posts: (PageObjectResponse | PartialPageObjectResponse)[];
 };
 
 /**

@@ -1,17 +1,18 @@
-import { Heading, Divider, Text } from "theme-ui";
-import React, { Fragment } from "react";
-import Layout from "../Layout";
 import Head from "next/head";
 import Link from "next/link";
-import { renderBlock } from "../../utils/renderBlock";
+import React, { Fragment } from "react";
+import { Divider, Heading, Text } from "theme-ui";
 import { NotionTextBlock } from "../../pages/[id]";
-// import ItemTags from "./item-tags";
+import { getReadTime, getTags } from "../../utils/notion";
+import { renderBlock } from "../../utils/renderBlock";
+import ItemTags from "../ItemTags";
+import Layout from "../Layout";
 
 const PostTemplate: React.FC<PostTemplateProps> = ({ page, blocks, date }) => (
     <Layout>
         <Head>
             <title>{page.properties.Name.title[0].plain_text}</title>
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/favicon.png" />
         </Head>
 
         <article>
@@ -23,18 +24,18 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ page, blocks, date }) => (
                 <Text variant="mono">
                     <time>{date}</time>
                 </Text>
-                {/* {post.tags && (
-          <React.Fragment>
-            {` — `}
-            <ItemTags tags={post.tags} />
-          </React.Fragment>
-        )} */}
-                {/* {post.timeToRead && (
-          <React.Fragment>
-            <br />
-            <span>{post.timeToRead} min read</span>
-          </React.Fragment>
-        )} */}
+                {page.properties.Tags.multi_select.length > 0 && (
+                    <React.Fragment>
+                        {` — `}
+                        <ItemTags tags={getTags(page)} />
+                    </React.Fragment>
+                )}
+                {page.properties["Read Time"].rich_text.length > 0 && (
+                    <React.Fragment>
+                        <br />
+                        <span>{getReadTime(page)} read</span>
+                    </React.Fragment>
+                )}
             </p>
 
             <Divider variant="dividers.pageHeading" />

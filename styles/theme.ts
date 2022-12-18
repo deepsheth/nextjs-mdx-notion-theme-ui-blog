@@ -261,7 +261,10 @@ const styles: ThemePolaroid["styles"] = {
         fontWeight: "body",
     },
     p: { ...baseTextBlock },
-    a: { color: "primary", transition: transitions.default },
+    a: {
+        color: "primary",
+        transition: transitions.default
+    },
     h1: { ...baseHeading, fontSize: [5, null, 6, null, 7] },
     h2: { ...baseHeading, fontSize: [4, null, 5, null, 6] },
     h3: { ...baseHeading, fontSize: [3, null, 4, null, 5] },
@@ -275,6 +278,8 @@ const styles: ThemePolaroid["styles"] = {
         maxWidth: "full",
         overflow: "scroll",
         padding: 2,
+        fontSize: '1rem',
+        fontFamily: fonts.monospace,
     },
     code: {
         fontFamily: "monospace",
