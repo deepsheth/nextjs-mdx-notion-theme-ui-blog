@@ -1,6 +1,5 @@
 // next.config.mjs
 import remarkGfm from "remark-gfm";
-import remarkPrism from "remark-prism";
 import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
@@ -12,8 +11,7 @@ const nextConfig = {
 const withMDX = createMDX({
     extension: /\.mdx?$/,
     options: {
-        // Support Github Flavored Markdown in .mdx files
-        remarkPlugins: [remarkGfm, remarkPrism],
+        remarkPlugins: [remarkGfm],
         rehypePlugins: [],
         providerImportSource: '@mdx-js/react',
     },

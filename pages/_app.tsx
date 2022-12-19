@@ -7,10 +7,20 @@ import React from "react";
 import { ThemeProvider } from 'theme-ui';
 import "../styles/globals.css";
 import themePolaroid from "../styles/theme";
+import Prism from '@theme-ui/prism'
+import Code from '../components/Code';
 
 function MyApp({ Component, pageProps }) {
+  const components = {
+    pre: ({ children }) => <>{children}</>,
+    code: ({ children, ...props }) => <Code {...props}>{children}</Code>
+  }
+  /**
+   * @see https://mdxjs.com/table-of-components/
+   * 
+   */
   const componentsWithStyles = useThemedStylesWithMdx(
-    useMDXComponents()
+    useMDXComponents(components)
   );
 
 

@@ -80,10 +80,7 @@ export const renderBlock = (block) => {
     case "code":
       console.log({ value });
       return (
-        <Code
-          codeString={value.rich_text[0].plain_text}
-          language={value.language}
-        ></Code>
+        <Code language={value.language}>{value.rich_text[0].plain_text}</Code>
       );
     case "file":
       const src_file =

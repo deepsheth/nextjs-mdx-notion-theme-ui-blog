@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container, jsx } from "theme-ui";
 import { Header } from "./Header"
-import Footer from "./Footer";
+import Footer from "./footer";
 import CodeStyles from "../styles/code";
 import SkipNavLink from "./SkipNavLink";
 
@@ -10,7 +10,6 @@ export type LayoutProps = {
     hasTransparentHeader?: boolean;
     hasFullWidthContainer?: boolean;
     hasFooter?: boolean;
-    children: React.ReactNode;
 };
 
 /**

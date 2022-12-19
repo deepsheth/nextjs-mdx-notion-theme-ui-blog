@@ -42,7 +42,7 @@ You can override the theme in your site by leveraging [Shadowing in Gatsby](http
 ```ts
 import themePolaroid from "@shetharp/gatsby-theme-polaroid/src/gatsby-plugin-theme-ui";
 export default {
-  ...themePolaroid,
+  ...themePolaroid, // highlight-line
   // ==================================================
   // This site's theme overrides
   // ==================================================
@@ -264,17 +264,6 @@ const settings: CardGameSettings = {
 }
 export settings;
 ```
-
-<Code
-  codeString={`const settings: CardGameSettings = {
-    firstPlayerName: 'dealer',
-    deckShuffled: true,
-    // Number of decks to start the game with. Each deck has 52 cards.
-    deckCount: 1,
-    // Number of total players including the dealer. There will always be one dealer.
-    numPlayers: 2,
-    `}
-></Code>
 
 # Image
 

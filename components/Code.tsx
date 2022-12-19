@@ -1,5 +1,5 @@
-import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import React from "react";
 // import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/nightOwl";
 // import { Language } from "../types/code";
@@ -11,17 +11,6 @@ export type CodeProps = {
     metastring?: string;
     [key: string]: any;
 };
-
-function getParams(className = ``) {
-    const [lang = ``, params = ``] = className.split(`:`);
-    return [lang.split(`language-`).pop().split(`{`).shift()].concat(
-        params.split(`&`).reduce((merged, param) => {
-            const [key, value] = param.split(`=`);
-            merged[key] = value;
-            return merged;
-        }, {})
-    );
-}
 
 const RE = /{([\d,-]+)}/;
 
@@ -44,18 +33,25 @@ const calculateLinesToHighlight = (meta: string) => {
 export const Code = ({
     codeString,
     noLineNumbers = false,
-    className: blockClassName,
+    className: blockClassName, // blockClassName can be in the format 'language-<language> <themeui injected css class>'
     metastring = ``,
-    language,
+    hasLineNumbers = true,
     title,
+    children: code,
     ...props
 }: CodeProps) => {
-    const showLineNumbers = true;
     const shouldHighlightLine = calculateLinesToHighlight(metastring);
+    const getLanguageFromClassName = () => {
+        return blockClassName?.split("language-")[1]?.split(" ")[0];
+    }
+    const { language = getLanguageFromClassName() } = props;
 
-    console.log({ language })
-    const hasLineNumbers = !noLineNumbers && language !== `noLineNumbers` && showLineNumbers;
-
+    if (!language) {
+        // Inline <code> block
+        return (
+            <code className={blockClassName}>{code}</code>
+        )
+    }
     if (props[`react-live`]) {
         return null;
         // (
@@ -67,7 +63,7 @@ export const Code = ({
         // );
     }
     return (
-        <Highlight {...defaultProps} code={codeString} language={language} theme={theme}>
+        <Highlight {...defaultProps} code={code} language={language} theme={theme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <React.Fragment>
                     {title && (
