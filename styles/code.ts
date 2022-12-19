@@ -19,7 +19,7 @@ export const codeStyles = {
         fontSize: 0,
         padding: 3,
         webkitOverflowScrolling: `touch`,
-        backgroundColor: `transparent`,
+        // backgroundColor: `transparent`,
         overflow: `initial`,
         float: `left`,
         minWidth: `100%`,

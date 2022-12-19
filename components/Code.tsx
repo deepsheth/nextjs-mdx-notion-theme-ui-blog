@@ -3,6 +3,7 @@ import React from "react";
 // import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/nightOwl";
 // import { Language } from "../types/code";
+import Prism from '@theme-ui/prism'
 
 export type CodeProps = {
     codeString: string;
@@ -12,44 +13,18 @@ export type CodeProps = {
     [key: string]: any;
 };
 
-const RE = /{([\d,-]+)}/;
+export const Code = (props: CodeProps) => {
+    const { className, children: code } = props;
 
-const calculateLinesToHighlight = (meta: string) => {
-    if (!RE.test(meta)) {
-        return () => false;
-    }
-    const lineNumbers = RE.exec(meta)![1]
-        .split(`,`)
-        .map((v) => v.split(`-`).map((x) => parseInt(x, 10)));
-    return (index: number) => {
-        const lineNumber = index + 1;
-        const inRange = lineNumbers.some(([start, end]) =>
-            end ? lineNumber >= start && lineNumber <= end : lineNumber === start
-        );
-        return inRange;
-    };
-};
-
-export const Code = ({
-    codeString,
-    noLineNumbers = false,
-    className: blockClassName, // blockClassName can be in the format 'language-<language> <themeui injected css class>'
-    metastring = ``,
-    hasLineNumbers = true,
-    title,
-    children: code,
-    ...props
-}: CodeProps) => {
-    const shouldHighlightLine = calculateLinesToHighlight(metastring);
     const getLanguageFromClassName = () => {
-        return blockClassName?.split("language-")[1]?.split(" ")[0];
+        return className?.split("language-")[1]?.split(" ")[0];
     }
     const { language = getLanguageFromClassName() } = props;
 
     if (!language) {
         // Inline <code> block
         return (
-            <code className={blockClassName}>{code}</code>
+            <code className={className}>{code}</code>
         )
     }
     if (props[`react-live`]) {
@@ -62,6 +37,9 @@ export const Code = ({
         // </LiveProvider>
         // );
     }
+    return (
+        <Prism {...props}>{code}</Prism>
+    )
     return (
         <Highlight {...defaultProps} code={code} language={language} theme={theme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (

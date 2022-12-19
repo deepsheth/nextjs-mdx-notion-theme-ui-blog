@@ -9,6 +9,7 @@ import "../styles/globals.css";
 import themePolaroid from "../styles/theme";
 import Prism from '@theme-ui/prism'
 import Code from '../components/Code';
+import theme from "prism-react-renderer/themes/nightOwl";
 
 function MyApp({ Component, pageProps }) {
   const components = {
