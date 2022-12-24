@@ -5,16 +5,14 @@ import {
 import { useThemedStylesWithMdx } from '@theme-ui/mdx';
 import React from "react";
 import { ThemeProvider } from 'theme-ui';
+import Code from '../components/Code';
 import "../styles/globals.css";
 import themePolaroid from "../styles/theme";
-import Prism from '@theme-ui/prism'
-import Code from '../components/Code';
-import theme from "prism-react-renderer/themes/nightOwl";
 
 function MyApp({ Component, pageProps }) {
   const components = {
     pre: ({ children }) => <>{children}</>,
-    code: ({ children, ...props }) => <Code {...props}>{children}</Code>
+    code: Code
   }
   /**
    * @see https://mdxjs.com/table-of-components/

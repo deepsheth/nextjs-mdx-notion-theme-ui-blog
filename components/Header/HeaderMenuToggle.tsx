@@ -1,7 +1,6 @@
 
-import React from "react";
-import { jsx } from "theme-ui";
 import { SystemStyleObject } from "@styled-system/css";
+import React from "react";
 
 export type HeaderMenuToggleProps = {
     isTextDark: boolean;

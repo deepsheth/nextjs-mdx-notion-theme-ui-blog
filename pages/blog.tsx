@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Divider, Heading, Text } from "theme-ui";
 import ItemTags from "../components/ItemTags";
 import Layout from "../components/Layout";
-import { databaseId } from "../constants/global";
+import { databaseId, NOTION_SLUG } from "../constants/global";
 import { getDate, getPosts, getTags } from "../utils/notion";
 import { NotionTextBlock } from "./[id]";
 
@@ -11,7 +11,7 @@ const BlogListItem: React.FC<BlogListItemProps> = (props) => {
     const { post, showTags } = props;
     return (<Box as="article" sx={sxBlogPostItem} >
         {/* @ts-ignore */}
-        <Link href={post.id} sx={sxBlogPostTitleLink} >
+        <Link href={`${NOTION_SLUG}/${post.id}`} sx={sxBlogPostTitleLink} >
             <Text sx={sxBlogPostTitle}>{post.properties.Name.title[0].plain_text}</Text>
         </Link>
 

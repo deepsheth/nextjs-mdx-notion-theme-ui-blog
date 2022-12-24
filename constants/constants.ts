@@ -1,19 +1,20 @@
-import { HeaderNavItem } from "./HeaderNav";
-import { HeaderMenuItem } from "./HeaderMenu";
+import { MDX_SLUG, BLOG_PAGE_SLUG, ABOUT_PAGE_SLUG } from './global';
+import { HeaderNavItem } from "../components/Header/HeaderNav";
+import { HeaderMenuItem } from "../components/Header/HeaderMenu";
 export const headerNavItems: HeaderNavItem[] = [
     {
         label: "Blog",
-        slug: "/blog",
+        slug: BLOG_PAGE_SLUG,
         isVisibleMobile: true,
         isVisibleTablet: true,
     },
     {
         label: "About",
-        slug: "/about",
+        slug: ABOUT_PAGE_SLUG,
     },
     {
         label: "Theme Preview",
-        slug: "/theme-preview",
+        slug: `${MDX_SLUG}/theme-preview`,
         isVisibleTablet: true,
     },
     {
@@ -29,7 +30,7 @@ export const headerMenuItems: HeaderMenuItem[] = [
     },
     {
         label: "Blog",
-        slug: "/blog",
+        slug: BLOG_PAGE_SLUG,
         isVisibleTablet: false,
     },
     {
@@ -38,11 +39,11 @@ export const headerMenuItems: HeaderMenuItem[] = [
     },
     {
         label: "About",
-        slug: "/about",
+        slug: ABOUT_PAGE_SLUG,
     },
     {
         label: "Theme Preview",
-        slug: "/theme-preview",
+        slug: `${MDX_SLUG}/theme-preview`,
         isVisibleLaptop: false,
     },
     {

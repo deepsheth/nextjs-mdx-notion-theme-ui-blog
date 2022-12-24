@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "theme-ui";
 import { ThemeUICSSObject } from "theme-ui";
-import { headerMenuItems } from "./constants";
+import { headerMenuItems } from "../../constants/constants";
 import { BASE_PATH } from "../../constants/global";
 import Link from "next/link";
 

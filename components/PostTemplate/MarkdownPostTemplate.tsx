@@ -6,6 +6,7 @@ import { useThemedStylesWithMdx } from '@theme-ui/mdx';
 import Head from "next/head";
 import React from "react";
 import { Divider, Heading, Text, ThemeProvider } from "theme-ui";
+import { FAVICON_PATH } from '../../constants/global';
 import themePolaroid from '../../styles/theme';
 import { Frontmatter } from "../../types/frontmatter";
 import Layout from "../Layout";
@@ -28,7 +29,7 @@ const MarkdownPostTemplate: React.FC<MarkdownPostTemplateProps> = ({ frontmatter
                 <Layout>
                     <Head>
                         <title>{title}</title>
-                        <link rel="icon" href="/favicon.png" />
+                        <link rel="icon" href={FAVICON_PATH} />
                     </Head>
 
                     <article>

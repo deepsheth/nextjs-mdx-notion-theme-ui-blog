@@ -78,7 +78,6 @@ export const renderBlock = (block) => {
     case "quote":
       return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
     case "code":
-      console.log({ value });
       return (
         <Code language={value.language}>{value.rich_text[0].plain_text}</Code>
       );

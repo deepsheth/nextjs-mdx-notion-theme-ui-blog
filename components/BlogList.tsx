@@ -5,6 +5,7 @@ import { Box, Text } from "@theme-ui/components";
 import { NotionTextBlock } from "../pages/[id]";
 import Link from "next/link";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { NOTION_SLUG } from "../constants/global";
 
 export type BlogListItemProps = {
     className?: string; // Pass down className to allow overriding styles
@@ -27,7 +28,7 @@ export const BlogListItem: React.FC<BlogListItemProps> = (props) => {
     return (
         <Box as="article" className={className} sx={sxBlogPostItem}>
             {/* @ts-ignore */}
-            <Link href={post.id} sx={sxBlogPostTitleLink}>
+            <Link href={`${NOTION_SLUG}/${post.id}`} sx={sxBlogPostTitleLink}>
                 <Text sx={sxBlogPostTitle}><NotionTextBlock text={post.properties.Name.title} /></Text>
             </Link>
 

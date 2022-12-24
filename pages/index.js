@@ -2,21 +2,19 @@ import { useTheme } from "@emotion/react";
 import Head from "next/head";
 import { HomePageSlides } from "../components/content/HomePageSlides";
 import { Layout } from "../components/Layout";
-import { databaseId } from "../constants/global";
+import { databaseId, FAVICON_PATH } from "../constants/global";
+// import { getAllPosts } from "../utils/blog";
 import { getPosts } from "../utils/notion";
 
 
 export default function Home({ posts }) {
   const theme = useTheme();
 
-  console.log({ posts });
-  console.log({ theme });
-
   return (
     <div>
       <Head>
         <title>Notion Next.js blog</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href={FAVICON_PATH} />
       </Head>
 
       <Layout hasTransparentHeader hasFullWidthContainer hasFooter={false}>

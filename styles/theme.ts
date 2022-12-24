@@ -3,7 +3,7 @@ import { SystemStyleObject } from "@styled-system/css";
 // "DM Sans" is imported as an npm package `typeface-dm-sans`, allowing it to be self-hosted.
 import "typeface-dm-sans";
 // Select them from '/presets' directory https://github.com/system-ui/theme-ui/tree/stable/packages/prism/presets
-import prismTheme from '@theme-ui/prism/presets/night-owl.json' // adds background line highlighting whereas prism-react-renderer does not
+// import prismTheme from '@theme-ui/prism/presets/night-owl.json' // adds background line highlighting whereas prism-react-renderer does not
 
 // ==================================================
 // Theme type
@@ -292,7 +292,7 @@ const styles: ThemePolaroid["styles"] = {
         borderStyle: "solid",
         borderColor: "muted",
         borderRadius: "default",
-        ...prismTheme,
+        // ...prismTheme,
     },
     ol: { ...baseTextBlock, ...baseIndentBlock },
     ul: { ...baseTextBlock, ...baseIndentBlock },

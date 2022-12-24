@@ -30,9 +30,6 @@ export const codeStyles = {
             },
         },
     },
-    ".token": {
-        display: `inline-block`,
-    },
     ".gatsby-highlight": {
         fontSize: "inherit",
         position: `relative`,
@@ -167,9 +164,6 @@ export const codeStyles = {
         py: 2,
     },
     "[data-name='live-preview'], [data-name='live-editor']": {},
-    ".token-line": {
-        pr: 3,
-    },
     ".highlight-line": {
         backgroundColor: `rgb(2, 55, 81)`,
         borderLeft: `4px solid rgb(2, 155, 206)`,

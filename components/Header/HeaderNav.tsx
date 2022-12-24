@@ -1,9 +1,8 @@
 
-import React from "react";
-import { BASE_PATH } from "../../constants/global";
-import { headerNavItems } from "./constants";
-import { ThemeUICSSObject } from "theme-ui";
 import Link from "next/link";
+import React from "react";
+import { ThemeUICSSObject } from "theme-ui";
+import { headerNavItems } from "../../constants/constants";
 
 export type HeaderNavProps = {
     isTextDark: boolean;

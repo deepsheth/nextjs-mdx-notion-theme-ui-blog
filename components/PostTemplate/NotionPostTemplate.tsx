@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React, { Fragment } from "react";
 import { Divider, Heading, Text } from "theme-ui";
+import { BASE_PATH, FAVICON_PATH } from "../../constants/global";
 import { NotionTextBlock } from "../../pages/[id]";
 import { getReadTime, getTags } from "../../utils/notion";
 import { renderBlock } from "../../utils/renderBlock";
@@ -12,7 +13,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ page, blocks, date }) => (
     <Layout>
         <Head>
             <title>{page.properties.Name.title[0].plain_text}</title>
-            <link rel="icon" href="/favicon.png" />
+            <link rel="icon" href={FAVICON_PATH} />
         </Head>
 
         <article>
@@ -44,7 +45,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ page, blocks, date }) => (
                 {blocks.map((block) => (
                     <Fragment key={block.id}>{renderBlock(block)}</Fragment>
                 ))}
-                <Link href="/">
+                <Link href={BASE_PATH}>
                     ← Go home
                 </Link>
             </section>

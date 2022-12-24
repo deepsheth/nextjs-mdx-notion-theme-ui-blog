@@ -8,7 +8,7 @@ import { SlideTitle } from "../Slide/SlideTitle";
 import { SlideDescription } from "../Slide/SlideDescription";
 import { SlideButton } from "../Slide/SlideButton";
 import { FooterLogo } from "../Footer/FooterLogo";
-import { databaseId } from "../../constants/global";
+import { databaseId, MDX_SLUG } from "../../constants/global";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export type SlidesProps = {
@@ -54,11 +54,11 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                     <React.Fragment>
                         <p>
                             You&apos;re looking at Polaroid&apos;s homepage. It&apos;s a great place to put together a{" "}
-                            <em>photo-rich portfolio</em>. Take a look at the <Link href="/theme-preview">Theme Preview</Link> page to
+                            <em>photo-rich portfolio</em>. Take a look at the <Link href={`${MDX_SLUG}/theme-preview`}>Theme Preview</Link> page to
                             see the other components that come with the theme.
                         </p>
                         <p sx={{ marginBottom: 0 }}>
-                            If you like what you see, get started with the <Link href="/readme">Readme</Link>.
+                            If you like what you see, get started with the <Link href={`${MDX_SLUG}/readme`}>Readme</Link>.
                         </p>
                     </React.Fragment>
                 }
@@ -68,7 +68,7 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                 highlightColor="accent"
                 isExpanded
                 imagePosition="0% 0%"
-                button={{ text: "Theme Preview", href: "/theme-preview" }}
+                button={{ text: "Theme Preview", href: `${MDX_SLUG}/theme-preview` }}
             />
 
             {/**
@@ -90,7 +90,7 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                 highlightColor="saffron.dark"
                 isExpanded
                 imagePosition="0% 0%"
-                button={{ text: "Get started", href: "/readme" }}
+                button={{ text: "Get started", href: `${MDX_SLUG}/readme` }}
             />
 
             {/**
@@ -156,6 +156,6 @@ export const HomePageSlides: React.FC<SlidesProps> = (props) => {
                     </p>
                 </SlideDescription>
             </LatestPostSlide>
-        </main>
+        </main >
     );
 };
