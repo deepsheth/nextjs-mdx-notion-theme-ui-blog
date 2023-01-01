@@ -8,7 +8,7 @@ import matter from 'gray-matter'
  * @see https://github.com/vercel/next.js/blob/canary/examples/blog-starter/lib/api.ts
  */
 
-const postsDirectory = join(process.cwd(), "posts")
+const postsDirectory = join(process.cwd(), "pages", MDX_SLUG)
 
 /**
  * @example ['theme-preview.mdx', 'hello-world.mdx']

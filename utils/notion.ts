@@ -46,7 +46,6 @@ const isPublished = (page) => {
 };
 
 export const getTags = (page) => {
-  console.log(page.properties.Tags.multi_select.map((tag) => tag.name));
   return page.properties.Tags.multi_select.map((tag) => tag.name);
 }
 

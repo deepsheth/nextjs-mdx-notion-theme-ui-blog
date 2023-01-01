@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "../types/post";
 import { ThemeUICSSObject } from "theme-ui"
 import { Box, Text } from "@theme-ui/components";
-import { NotionTextBlock } from "../pages/[id]";
+import { NotionTextBlock } from "../pages/[slug]";
 import Link from "next/link";
 import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { NOTION_SLUG } from "../constants/global";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { Fragment } from "react";
 import { Divider, Heading, Text } from "theme-ui";
 import { BASE_PATH, FAVICON_PATH } from "../../constants/global";
-import { NotionTextBlock } from "../../pages/[id]";
+import { NotionTextBlock } from "../../pages/[slug]";
 import { getReadTime, getTags } from "../../utils/notion";
 import { renderBlock } from "../../utils/renderBlock";
 import ItemTags from "../ItemTags";

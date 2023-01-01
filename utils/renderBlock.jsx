@@ -1,5 +1,5 @@
 import React from "react";
-import { NotionTextBlock } from "../pages/[id]";
+import { NotionTextBlock } from "../pages/[slug]";
 import styles from "../pages/post.module.css";
 import Link from "next/link";
 import Code from "../components/Code";
