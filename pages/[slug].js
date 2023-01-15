@@ -1,10 +1,14 @@
-import { getDatabase, getPage, getBlocks, getDate } from "../utils/notion";
+import { useRouter } from 'next/router';
+import { Link, Spinner } from "theme-ui";
+import { MarkdownPostTemplate, NotionPostTemplate } from "../components/PostTemplate";
 import { databaseId } from "../constants/global";
-import styles from "./post.module.css";
-import { NotionPostTemplate } from "../components/PostTemplate";
+import { getPostBySlug, getPostSlugs } from "../utils/blog";
+import markdownToHtml from "../utils/markdownToHtml";
+import { getBlocks, getDatabase, getDate, getPage } from "../utils/notion";
 import { renderBlock } from "../utils/renderBlock";
-import { Link, Text } from "theme-ui";
-import { getPostSlugs } from "../utils/blog";
+import styles from "./post.module.css";
+import Head from 'next/head'
+import Error from 'next/error'
 
 export const NotionTextBlock = ({ text }) => {
   if (!text) {
@@ -53,10 +57,37 @@ const renderNestedList = (block) => {
   return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
 };
 
-export default function Post({ page, blocks }) {
-  if (!page || !blocks) {
-    return <div />;
+export default function Post({ isNotionPage, page, blocks, children }) {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Spinner />;
   }
+
+  // if (!router.isFallback && !page?.slug) {
+  //   return <Error statusCode={404} />
+  // }
+  if (!isNotionPage) {
+    const frontmatter = {
+      title: page.title,
+      slug: page.slug,
+      date: page.date,
+    }
+    return (
+      <>
+        <Head>
+          <title>
+            {page.title}
+          </title>
+          {/* <meta property="og:image" content={post.ogImage.url} /> */}
+        </Head>
+        <MarkdownPostTemplate frontmatter={frontmatter}>
+          {page.content}
+        </MarkdownPostTemplate>
+      </>
+    )
+  }
+
 
   return (
     <NotionPostTemplate page={page} blocks={blocks} date={getDate(page)}></NotionPostTemplate>
@@ -80,17 +111,16 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const database = await getDatabase(databaseId);
-
   // If a notion id is provided, use that to get the page
   // If a notion slug is provided, get the id from the database and use that to get the page
   // If a mdx slug is provided, get the page from the mdx file
-  const notionPageData = database.map((page) => {
+  const notionPages = database.map((page) => {
     const slug = page.properties["Slug"].rich_text[0]?.plain_text;
     return { slug: slug || page.id, id: page.id, isNotionPage: true };
   });
 
   // See if the slug belongs to a notion page
-  const notionPage = notionPageData.find((pageData) => pageData.id === slug || pageData.slug === slug)
+  const notionPage = notionPages.find((pageData) => pageData.id === slug || pageData.slug === slug)
   const isNotionPage = notionPage?.isNotionPage;
 
 
@@ -120,16 +150,24 @@ export const getStaticProps = async (context) => {
     });
     return {
       props: {
+        ...notionPage,
         page,
         blocks: blocksWithChildren,
       },
       revalidate: 1,
     };
   } else {
+    /**
+     * @see https://github.com/vercel/next.js/blob/canary/examples/blog-starter/pages/posts/[slug].tsx#L62
+     */
+    const post = getPostBySlug(slug, ["title", "slug", "content"])
+    const content = await markdownToHtml(post.content || '')
+
     return {
       props: {
-        // page,
-        blocks: [],
+        isNotionPage: false,
+        page: post,
+        content,
       },
       revalidate: 1,
     };
