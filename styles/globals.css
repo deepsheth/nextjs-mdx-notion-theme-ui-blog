@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
 }
 
@@ -11,16 +11,13 @@ body {
 }
 
 a {
-}
+} */
 
 * {
   box-sizing: border-box;
 }
 
-h1 {
-}
-
-html: {
+html {
   webkittextsizeadjust: 100%;
 }
 
@@ -40,10 +37,10 @@ iframe {
   display: none;
 }
 
-#@TODO: fix ::selection {
-  /* color: theme.colors.text, */
-  /* backgroundColor: theme.colors.highlight, */
-}
+/* #@TODO: fix ::selection { */
+/* color: theme.colors.text, */
+/* backgroundColor: theme.colors.highlight, */
+/* } */
 
 a {
   transition: color 200ms ease 0s;
