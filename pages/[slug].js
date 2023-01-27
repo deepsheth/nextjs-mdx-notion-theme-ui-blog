@@ -44,7 +44,7 @@ export const NotionTextBlock = ({ text }) => {
   });
 };
 
-const renderNestedList = (block) => {
+export const renderNestedList = (block) => {
   const { type } = block;
   const value = block[type];
   if (!value) return null;
